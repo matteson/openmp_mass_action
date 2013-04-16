@@ -44,10 +44,12 @@ We can use make to compile the resulting code.  You will need to edit the makefi
 of sundials and MATLAB.
 
 [alm475@login-0-0 ~]$ cd model_adapt/
+
 [alm475@login-0-0 model_adapt]$ make
 gcc -c  -I/home/alm475/sundialsgcc/include/ -I/share/apps/matlab/R2011a/extern/include -I/share/apps/matlab/R2011a/simulink/include -DMATLAB_MEX_FILE   -DMX_COMPAT_32  -DNDEBUG -D_GNU_SOURCE -ansi  -fexceptions -fPIC -fno-omit-frame-pointer -pthread  -fopenmp -O3 -ffast-math  "C_Source/main.c"
 gcc   -L/home/alm475/sundialsgcc/lib/ -lsundials_cvode -lsundials_nvecserial -Wl,-rpath-link,/share/apps/matlab/R2011a/bin/glnxa64 -L/share/apps/matlab/R2011a/bin/glnxa64 -lmx -lmex -lmat -lm -lstdc++ -pthread -shared -Wl,--version-script,/share/apps/matlab/R2011a/extern/lib/glnxa64/mexFunction.map -Wl,--no-undefined -fopenmp -O3 -ffast-math -o  "fastsim.mexa64"  main.o
 rm -f *.o
+
 [alm475@login-0-0 model_adapt]$ ls
 Copy_of_C_Source  fastsim.mexa64  M_files  openmp_compile.m
 C_Source    makefile	  models
